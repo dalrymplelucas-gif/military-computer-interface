@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military Command Center - TACOPS System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="military-terminal">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <h1>TACTICAL OPERATIONS COMMAND</h1>
+                <p>TACOPS v2.1 | SECURE COMMUNICATIONS</p>
+            </div>
+            <div class="header-right">
+                <div class="status-indicator active"></div>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </div>
+
+        <!-- Main Display -->
+        <div class="display-container">
+            <div class="radar-panel">
+                <h3>TACTICAL DISPLAY</h3>
+                <canvas id="radarCanvas" width="300" height="300"></canvas>
+                <p class="coordinates">COORDINATES: 38°47'21"N 77°02'11"W</p>
+            </div>
+
+            <div class="terminal-panel">
+                <h3>COMMAND TERMINAL</h3>
+                <div id="output" class="terminal-output">
+                    <p>> TACOPS SYSTEM INITIALIZED</p>
+                    <p>> AWAITING COMMAND INPUT...</p>
+                </div>
+                <div class="input-line">
+                    <span>$</span>
+                    <input type="text" id="commandInput" placeholder="Enter command..." autofocus>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="sendCommand('STATUS')">SYSTEM STATUS</button>
+                <button class="btn btn-primary" onclick="sendCommand('SCAN')">AREA SCAN</button>
+                <button class="btn btn-primary" onclick="sendCommand('WEAPONS')">WEAPONS SYS</button>
+                <button class="btn btn-danger" onclick="sendCommand('ALERT')">RED ALERT</button>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="sendCommand('COMMS')">COMMUNICATIONS</button>
+                <button class="btn btn-secondary" onclick="sendCommand('INTEL')">INTEL REPORT</button>
+                <button class="btn btn-secondary" onclick="sendCommand('DEPLOY')">DEPLOY UNITS</button>
+                <button class="btn btn-secondary" onclick="clearTerminal()">CLEAR</button>
+            </div>
+        </div>
+
+        <!-- Data Panels -->
+        <div class="data-panels">
+            <div class="panel unit-status">
+                <h4>UNIT STATUS</h4>
+                <table>
+                    <tr><td>Alpha Squadron:</td><td class="status-good">READY</td></tr>
+                    <tr><td>Bravo Squadron:</td><td class="status-good">READY</td></tr>
+                    <tr><td>Charlie Squadron:</td><td class="status-caution">DEPLOYING</td></tr>
+                    <tr><td>Delta Squadron:</td><td class="status-good">READY</td></tr>
+                </table>
+            </div>
+
+            <div class="panel threat-assessment">
+                <h4>THREAT ASSESSMENT</h4>
+                <table>
+                    <tr><td>Sector 1:</td><td class="threat-low">LOW</td></tr>
+                    <tr><td>Sector 2:</td><td class="threat-medium">MEDIUM</td></tr>
+                    <tr><td>Sector 3:</td><td class="threat-high">HIGH</td></tr>
+                    <tr><td>Sector 4:</td><td class="threat-low">LOW</td></tr>
+                </table>
+            </div>
+
+            <div class="panel systems-check">
+                <h4>SYSTEMS CHECK</h4>
+                <table>
+                    <tr><td>Communications:</td><td class="status-good">✓</td></tr>
+                    <tr><td>Power Systems:</td><td class="status-good">✓</td></tr>
+                    <tr><td>Targeting Array:</td><td class="status-good">✓</td></tr>
+                    <tr><td>Shields:</td><td class="status-caution">⚠</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>CLASSIFIED - AUTHORIZED PERSONNEL ONLY | TIME: <span id="time"></span> | ALERT LEVEL: <span id="alertLevel">GREEN</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
